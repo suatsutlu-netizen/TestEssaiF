@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1a1a2e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Essais Frein" />
+  <title>Essais de Frein</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE : ACCUEIL
+  ═══════════════════════════════════════════════ -->
+  <div id="page-home" class="page page-home active">
+    <div class="home-header">
+      <div class="home-logo">🚆</div>
+      <h1 class="home-title">ESSAIS DE FREIN</h1>
+      <p class="home-subtitle">Système de traçabilité ferroviaire</p>
+    </div>
+    <div class="home-actions">
+      <button class="btn-primary btn-large" id="btn-start-test">
+        <span class="btn-icon">▶</span>
+        ESSAI DE FREIN
+      </button>
+      <button class="btn-secondary btn-large" id="btn-history">
+        <span class="btn-icon">📋</span>
+        HISTORIQUE
+      </button>
+    </div>
+    <div class="home-footer">
+      <span id="offline-indicator" class="offline-badge hidden">● HORS LIGNE</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE : HISTORIQUE
+  ═══════════════════════════════════════════════ -->
+  <div id="page-history" class="page page-history">
+    <div class="page-header">
+      <button class="btn-back" id="btn-history-back">◀ RETOUR</button>
+      <h2 class="page-title">HISTORIQUE</h2>
+    </div>
+    <div class="history-container">
+      <div id="history-list" class="history-list">
+        <p class="history-empty">Aucun essai enregistré.</p>
+      </div>
+    </div>
+    <div class="page-footer">
+      <button class="btn-export" id="btn-export">📄 EXPORTER EN .DOC</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE 1 : ALIMENTATION SURCHARGE
+  ═══════════════════════════════════════════════ -->
+  <div id="page-1" class="page page-yellow">
+    <div class="page-header page-header-yellow">
+      <button class="btn-back btn-back-dark" id="btn-p1-back">◀ RETOUR</button>
+      <h2 class="page-title page-title-dark">ALIMENTATION SURCHARGE</h2>
+      <button class="btn-skip btn-skip-dark" id="btn-p1-skip">SAUTER ▶</button>
+    </div>
+
+    <div class="page-content">
+      <div class="timer-section">
+        <div class="timer-label-row">
+          <span class="timer-label">MINUTERIE</span>
+          <div class="duration-selector">
+            <label for="duration-p1">Durée :</label>
+            <select id="duration-p1" class="duration-select">
+              <option value="360">6 min</option>
+              <option value="300">5 min</option>
+              <option value="420">7 min</option>
+              <option value="480">8 min</option>
+              <option value="600">10 min</option>
+            </select>
+          </div>
+        </div>
+        <div id="timer-display-1" class="timer-display timer-display-dark">06:00</div>
+        <div class="timer-buttons">
+          <button class="btn-timer btn-timer-dark" id="btn-start-p1">
+            ▶ ALIMENTATION SURCHARGE
+          </button>
+          <button class="btn-reset btn-reset-dark" id="btn-reset-p1">↺ RÉINITIALISER</button>
+        </div>
+        <div id="alert-p1" class="alert-banner alert-dark hidden">
+          ⚠ TEMPS ÉCOULÉ — VÉRIFIER L'ALIMENTATION
+        </div>
+      </div>
+
+      <div class="separator-dark"></div>
+
+      <div class="action-section">
+        <p class="action-hint action-hint-dark">Horodatage 2 — Confirmer l'élimination</p>
+        <button class="btn-action btn-action-dark" id="btn-elimination">
+          ✓ ÉLIMINATION
+        </button>
+        <div id="ts-elimination" class="timestamp-display timestamp-dark hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE 2 : ÉLIMINATION SURCHARGE 5 BAR
+  ═══════════════════════════════════════════════ -->
+  <div id="page-2" class="page page-black">
+    <div class="page-header page-header-black">
+      <button class="btn-back btn-back-yellow" id="btn-p2-back">◀ RETOUR</button>
+      <h2 class="page-title page-title-yellow">ÉLIMINATION SURCHARGE : 5 bar</h2>
+      <button class="btn-skip btn-skip-yellow" id="btn-p2-skip">SAUTER ▶</button>
+    </div>
+
+    <div class="page-content">
+      <div class="timer-section">
+        <div class="timer-label-row">
+          <span class="timer-label timer-label-yellow">MINUTERIE</span>
+          <div class="duration-selector">
+            <label for="duration-p2" class="label-yellow">Durée :</label>
+            <select id="duration-p2" class="duration-select duration-select-yellow">
+              <option value="360">6 min</option>
+              <option value="300">5 min</option>
+              <option value="420">7 min</option>
+              <option value="480">8 min</option>
+              <option value="600">10 min</option>
+            </select>
+          </div>
+        </div>
+        <div id="timer-display-2" class="timer-display timer-display-yellow">06:00</div>
+        <div class="timer-buttons">
+          <button class="btn-timer btn-timer-yellow" id="btn-start-p2">
+            ▶ DÉMARRER TIMER
+          </button>
+          <button class="btn-reset btn-reset-yellow" id="btn-reset-p2">↺ RÉINITIALISER</button>
+        </div>
+        <div id="alert-p2" class="alert-banner alert-yellow hidden">
+          ⚠ TEMPS ÉCOULÉ — VÉRIFIER L'ÉLIMINATION
+        </div>
+      </div>
+
+      <div class="separator-yellow"></div>
+
+      <div class="action-section">
+        <p class="action-hint action-hint-yellow">Horodatage 3 — Confirmer l'étanchéité CG</p>
+        <button class="btn-action btn-action-yellow" id="btn-etancheite">
+          ✓ ÉTANCHÉITÉ CG
+        </button>
+        <div id="ts-etancheite" class="timestamp-display timestamp-yellow hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE 3 : CONTRÔLE ÉTANCHÉITÉ
+  ═══════════════════════════════════════════════ -->
+  <div id="page-3" class="page page-control">
+    <div class="page-header page-header-control">
+      <button class="btn-back btn-back-control" id="btn-p3-back">◀ RETOUR</button>
+      <h2 class="page-title page-title-control">CONTRÔLE ÉTANCHÉITÉ</h2>
+      <button class="btn-skip btn-skip-control" id="btn-p3-skip">SAUTER ▶</button>
+    </div>
+
+    <div class="page-content page-content-control">
+      <div class="instructions-section">
+        <ul class="instructions-list">
+          <li>Vérifier la pression de la conduite générale (CG) : <strong>5 bar</strong></li>
+          <li>Observer la stabilité de la pression pendant <strong>1 minute</strong></li>
+          <li>La chute de pression doit être <strong>inférieure à 0,3 bar/min</strong></li>
+          <li>Contrôler l'absence de fuites sur les raccords et flexibles</li>
+          <li>Vérifier le bon fonctionnement du robinet de queue de train</li>
+        </ul>
+      </div>
+
+      <div class="timer-section timer-section-control">
+        <div class="timer-label-row">
+          <span class="timer-label timer-label-control">CHRONO ÉTANCHÉITÉ</span>
+        </div>
+        <div id="timer-display-3" class="timer-display timer-display-control">01:00</div>
+        <div class="timer-buttons">
+          <button class="btn-timer btn-timer-control" id="btn-start-p3">
+            ▶ LANCER CHRONO 1 MIN
+          </button>
+          <button class="btn-reset btn-reset-control" id="btn-reset-p3">↺ RÉINITIALISER</button>
+        </div>
+      </div>
+
+      <div class="separator-control"></div>
+
+      <div class="action-section action-section-control">
+        <button class="btn-conclude" id="btn-conclude">
+          ✓ ESSAI DE FREIN TERMINÉ CONCLUANT
+        </button>
+        <div id="ts-conclude" class="timestamp-display timestamp-control hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE 4 : TERMINÉ
+  ═══════════════════════════════════════════════ -->
+  <div id="page-4" class="page page-done">
+    <div class="done-content">
+      <div class="done-icon">✓</div>
+      <div class="done-text">TERMINÉ</div>
+      <div id="done-info" class="done-info"></div>
+      <button class="btn-done-home" id="btn-done-home">⌂ ACCUEIL</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MODAL : CONFIRMATION RETOUR
+  ═══════════════════════════════════════════════ -->
+  <div id="modal-confirm" class="modal-overlay hidden">
+    <div class="modal-box">
+      <p class="modal-text">Revenir à l'accueil ? Les données non sauvegardées seront perdues.</p>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-cancel" id="modal-cancel">Annuler</button>
+        <button class="modal-btn modal-btn-confirm" id="modal-confirm-btn">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
